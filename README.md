@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Nish Decentralized Exchange</h1>
 
-## Getting Started
+<p align="center">
+  <img src="https://img.shields.io/badge/Powered_by-Solana_and_PostgreSQL-blue?style=for-the-badge&logo=solana" alt="Powered by Solana">
+  <img src="https://img.shields.io/badge/Powered_by-Next.js-black?style=for-the-badge&logo=next.js" alt="Powered by Next.js">
+</p>
 
-First, run the development server:
+<p align="center">
+  <img src="public/nish-dcex.png" width="1000" alt="Decentralized Exchange">
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is a decentralized exchange (DEX) that facilitates swap operations between Solana (SOL) and USDT. The backend utilizes PostgreSQL for database management, and the frontend is built using Next.js with integration for authentication and token management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Swap Operations**: Allows swapping between Solana and USDT using Jupiter's swap API.
+- **Token Balances**: Fetches and displays token balances and their USD value.
+- **Authentication**: User authentication via NextAuth.
+- **Dynamic UI**: Responsive and dynamic frontend components for a seamless user experience.
 
-## Learn More
+## Setup and Installation
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Docker
+- Node.js (v14 or higher)
+- PostgreSQL
+- Solana CLI (for local development)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Setting Up PostgreSQL with Docker
 
-## Deploy on Vercel
+1. **Pull PostgreSQL Docker Image**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    docker pull postgres:latest
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. **Run PostgreSQL Container**
+
+    ```bash
+    docker run --name postgres-container -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=yourpassword -e POSTGRES_DB=yourdatabase -p 5432:5432 -d postgres:latest
+    ```
+
+    Replace `yourpassword` and `yourdatabase` with your desired password and database name.
+
+### Backend Setup
+
+1. **Clone the Repository**
+
+    ```bash
+    git clone https://github.com/your-repo/decentralized-exchange.git
+    cd decentralized-exchange
+    ```
+
+2. **Install Dependencies**
+
+    ```bash
+    cd backend
+    npm install
+    ```
+
+3. **Set Up Environment Variables**
+
+    Create a `.env` file in the `backend` directory and add the following variables:
+
+    ```env
+    DATABASE_URL=postgres://postgres:yourpassword@localhost:5432/yourdatabase
+    SOLANA_CLUSTER=https://mainnet.helius-rpc.com/?api-key=your_api_key
+    ```
+
+    Replace `yourpassword`, `yourdatabase`, and `your_api_key` with your PostgreSQL password, database name, and Solana API key, respectively.
+
+4. **Run Migrations**
+
+    If applicable, run migrations to set up your database schema.
+
+    ```bash
+    npm run migrate
+    ```
+
+5. **Start the Backend Server**
+
+    ```bash
+    npm start
+    ```
+
+### Frontend Setup
+
+1. **Install Dependencies**
+
+    ```bash
+    cd frontend
+    npm install
+    ```
+
+2. **Set Up Environment Variables**
+
+    Create a `.env.local` file in the `frontend` directory and add the following variables:
+
+    ```env
+    NEXT_PUBLIC_API_URL=http://localhost:3000/api
+    ```
+
+    Adjust `NEXT_PUBLIC_API_URL` if your API runs on a different URL or port.
+
+3. **Start the Frontend Server**
+
+    ```bash
+    npm run dev
+    ```
+
+### Usage
+
+1. **Access the Application**
+
+    Open your browser and navigate to `http://localhost:3000`.
+
+2. **Authentication**
+
+    Sign in using Google authentication. Ensure that your Google OAuth credentials are properly configured in the NextAuth settings.
+
+3. **Swap Tokens**
+
+    Use the provided UI to perform swap operations between Solana and USDT.
+
+4. **View Token Balances**
+
+    Navigate to the token management section to view and manage your token balances.
+
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
