@@ -6,6 +6,10 @@
 </p>
 
 <p align="center">
+  <img src="public/DCEX.png" width="1000" alt="Decentralized Exchange">
+</p>
+
+<p align="center">
   <video width="1000" controls autoplay loop muted>
     <source src="public/Nish-DCEX.mp4" type="video/mp4">
     Your browser does not support the video tag.
