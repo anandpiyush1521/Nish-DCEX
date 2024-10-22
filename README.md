@@ -6,7 +6,10 @@
 </p>
 
 <p align="center">
-  <img src="public/nish-dcex.png" width="1000" alt="Decentralized Exchange">
+  <video width="1000" controls autoplay loop muted>
+    <source src="public/Nish-DCEX.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 ## Overview
@@ -129,8 +132,6 @@ This project is a decentralized exchange (DEX) that facilitates swap operations 
 
     Navigate to the token management section to view and manage your token balances.
 
-
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
